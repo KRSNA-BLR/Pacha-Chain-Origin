@@ -1,0 +1,180 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://pacha-chain.xyz/schemas/batch-metadata-v1.json",
+  "title": "Pacha-Chain-Origin Batch Metadata",
+  "description": "Schema de metadata para lotes de cacao/café verificado contra GS1 GTS2. Almacenado en IPFS, referenciado on-chain via ERC1155URIStorage.",
+  "type": "object",
+  "required": ["name", "description", "properties"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Nombre legible del lote (ej: 'Lote Cacao Nacional - Esmeraldas #2026-001')",
+      "minLength": 5,
+      "maxLength": 200
+    },
+    "description": {
+      "type": "string",
+      "description": "Descripción detallada del lote",
+      "minLength": 10,
+      "maxLength": 2000
+    },
+    "image": {
+      "type": "string",
+      "description": "URI IPFS de la imagen principal del lote",
+      "pattern": "^ipfs://"
+    },
+    "external_url": {
+      "type": "string",
+      "description": "URL de verificación pública del lote",
+      "format": "uri"
+    },
+    "properties": {
+      "type": "object",
+      "required": ["product", "origin", "harvest"],
+      "properties": {
+        "gs1": {
+          "type": "object",
+          "description": "Identificadores GS1 opcionales para integración con sistemas tradicionales",
+          "properties": {
+            "gtin": { "type": "string", "pattern": "^[0-9]{8,14}$" },
+            "batchLot": { "type": "string", "maxLength": 50 },
+            "sscc": { "type": "string" },
+            "traceabilityStandard": { "type": "string" }
+          }
+        },
+        "product": {
+          "type": "object",
+          "required": ["type", "variety"],
+          "description": "GS1 KDE WHAT - Información del producto",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": ["Cacao", "Coffee"],
+              "description": "Tipo de producto (debe coincidir con productType on-chain)"
+            },
+            "variety": {
+              "type": "string",
+              "description": "Variedad específica del producto",
+              "minLength": 2,
+              "maxLength": 100
+            },
+            "grade": { "type": "string", "maxLength": 100 },
+            "beanCount": { "type": "string" },
+            "certification": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Lista de certificaciones (Rainforest Alliance, UTZ, etc.)"
+            }
+          }
+        },
+        "origin": {
+          "type": "object",
+          "required": ["country", "province", "farm"],
+          "description": "GS1 KDE WHERE - Información de ubicación",
+          "properties": {
+            "country": { "type": "string", "const": "Ecuador" },
+            "countryCode": { "type": "string", "const": "EC" },
+            "province": { "type": "string", "minLength": 2 },
+            "canton": { "type": "string" },
+            "parish": { "type": "string" },
+            "farm": { "type": "string", "minLength": 2 },
+            "coordinates": {
+              "type": "object",
+              "properties": {
+                "latitude": { "type": "string", "pattern": "^-?[0-9]+(\\.[0-9]+)?$" },
+                "longitude": { "type": "string", "pattern": "^-?[0-9]+(\\.[0-9]+)?$" }
+              },
+              "required": ["latitude", "longitude"]
+            },
+            "altitude": { "type": "string" },
+            "soilType": { "type": "string" },
+            "climate": { "type": "string" }
+          }
+        },
+        "harvest": {
+          "type": "object",
+          "required": ["date", "method"],
+          "description": "GS1 KDE WHEN - Información de cosecha",
+          "properties": {
+            "date": { "type": "string", "format": "date-time" },
+            "method": { "type": "string" },
+            "crew": { "type": "string" },
+            "tools": { "type": "string" },
+            "podMaturity": { "type": "string" }
+          }
+        },
+        "processing": {
+          "type": "object",
+          "description": "Detalles de procesamiento (fermentación y secado)",
+          "properties": {
+            "fermentation": {
+              "type": "object",
+              "properties": {
+                "method": { "type": "string" },
+                "days": { "type": "integer", "minimum": 1, "maximum": 30 },
+                "turnsPerDay": { "type": "integer" },
+                "maxTemperature": { "type": "string" },
+                "avgTemperature": { "type": "string" },
+                "startDate": { "type": "string", "format": "date-time" },
+                "endDate": { "type": "string", "format": "date-time" }
+              }
+            },
+            "drying": {
+              "type": "object",
+              "properties": {
+                "method": { "type": "string" },
+                "days": { "type": "integer", "minimum": 1, "maximum": 30 },
+                "finalHumidity": { "type": "string" },
+                "avgTemperature": { "type": "string" },
+                "startDate": { "type": "string", "format": "date-time" },
+                "endDate": { "type": "string", "format": "date-time" }
+              }
+            }
+          }
+        },
+        "quality": {
+          "type": "object",
+          "description": "Evaluación de calidad del lote",
+          "properties": {
+            "flavorProfile": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "cuppingScore": { "type": "number", "minimum": 0, "maximum": 100 },
+            "defects": { "type": "string" },
+            "cutTest": { "type": "string" },
+            "moistureContent": { "type": "string" }
+          }
+        },
+        "shipping": {
+          "type": "object",
+          "description": "Detalles de envío y logística",
+          "properties": {
+            "packingType": { "type": "string" },
+            "containerNumber": { "type": "string" },
+            "portOfOrigin": { "type": "string" },
+            "portOfDestination": { "type": "string" },
+            "shippingLine": { "type": "string" },
+            "estimatedTransitDays": { "type": "integer" }
+          }
+        },
+        "documents": {
+          "type": "object",
+          "description": "URIs IPFS de documentos del lote",
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^ipfs://"
+          }
+        },
+        "photos": {
+          "type": "object",
+          "description": "URIs IPFS de fotos del lote",
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^ipfs://"
+          }
+        }
+      }
+    }
+  }
+}

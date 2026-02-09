@@ -1,0 +1,27 @@
+{
+  "name": "Pacha-Chain-Origin",
+  "short_name": "PachaChain",
+  "description": "Trazabilidad blockchain Farm-to-Table para cacao y café premium de Ecuador",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFF8E1",
+  "theme_color": "#1B5E20",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "food"],
+  "lang": "es",
+  "dir": "ltr"
+}

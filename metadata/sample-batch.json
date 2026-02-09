@@ -1,0 +1,98 @@
+{
+  "name": "Lote Cacao Nacional - Esmeraldas #2026-001",
+  "description": "Cacao fino de aroma, variedad Nacional, cosechado en Finca La Aurora, Quinindé, Esmeraldas, Ecuador. Fermentación natural 6 días en cajón de madera de laurel. Secado solar 8 días en camas elevadas.",
+  "image": "ipfs://QmPLACEHOLDER/foto-lote-cacao.jpg",
+  "external_url": "https://pacha-chain.xyz/batch/2026-ESM-001",
+  "properties": {
+    "gs1": {
+      "gtin": "7861234567890",
+      "batchLot": "2026-ESM-001",
+      "sscc": "",
+      "traceabilityStandard": "GS1 GTS2 v2.0"
+    },
+    "product": {
+      "type": "Cacao",
+      "variety": "Nacional Fino de Aroma",
+      "grade": "ASS (Arriba Superior Summer)",
+      "beanCount": "85-90 beans/100g",
+      "certification": [
+        "Rainforest Alliance",
+        "UTZ Certified"
+      ]
+    },
+    "origin": {
+      "country": "Ecuador",
+      "countryCode": "EC",
+      "province": "Esmeraldas",
+      "canton": "Quinindé",
+      "parish": "Rosa Zárate",
+      "farm": "Finca La Aurora",
+      "coordinates": {
+        "latitude": "0.3167",
+        "longitude": "-79.4500"
+      },
+      "altitude": "150m",
+      "soilType": "Volcanic alluvial",
+      "climate": "Tropical humid"
+    },
+    "harvest": {
+      "date": "2026-01-15T08:00:00Z",
+      "method": "Manual selective picking",
+      "crew": "Equipo Aurora-A (6 persons)",
+      "tools": "Machete, canvas bags",
+      "podMaturity": "Yellow-orange (optimal)"
+    },
+    "processing": {
+      "fermentation": {
+        "method": "Cajón de madera de laurel",
+        "days": 6,
+        "turnsPerDay": 2,
+        "maxTemperature": "48°C",
+        "avgTemperature": "42°C",
+        "startDate": "2026-01-15T14:00:00Z",
+        "endDate": "2026-01-21T14:00:00Z"
+      },
+      "drying": {
+        "method": "Solar, camas elevadas de madera",
+        "days": 8,
+        "finalHumidity": "7%",
+        "avgTemperature": "28°C",
+        "startDate": "2026-01-22T07:00:00Z",
+        "endDate": "2026-01-30T16:00:00Z"
+      }
+    },
+    "quality": {
+      "flavorProfile": [
+        "Floral (jazmín)",
+        "Frutal (maracuyá, cítrico)",
+        "Nuez (almendra tostada)"
+      ],
+      "cuppingScore": 87,
+      "defects": "0%",
+      "cutTest": "85% well-fermented, 10% partially, 5% slate",
+      "moistureContent": "7.0%"
+    },
+    "shipping": {
+      "packingType": "Sacos de yute GrainPro lined, 69kg",
+      "containerNumber": "MSKU1234567",
+      "portOfOrigin": "Puerto Marítimo de Guayaquil",
+      "portOfDestination": "Port of Rotterdam",
+      "shippingLine": "Maersk Line",
+      "estimatedTransitDays": 21
+    },
+    "documents": {
+      "fitosanitaryCertificate": "ipfs://QmPLACEHOLDER/cert-fitosanitario.pdf",
+      "certificateOfOrigin": "ipfs://QmPLACEHOLDER/cert-origen.pdf",
+      "laboratoryAnalysis": "ipfs://QmPLACEHOLDER/lab-analysis.pdf",
+      "rainforestAllianceCert": "ipfs://QmPLACEHOLDER/ra-cert.pdf",
+      "exportPermit": "ipfs://QmPLACEHOLDER/export-permit.pdf"
+    },
+    "photos": {
+      "harvest": "ipfs://QmPLACEHOLDER/harvest.jpg",
+      "fermentation": "ipfs://QmPLACEHOLDER/fermentation.jpg",
+      "drying": "ipfs://QmPLACEHOLDER/drying.jpg",
+      "packing": "ipfs://QmPLACEHOLDER/packing.jpg",
+      "qualityCheck": "ipfs://QmPLACEHOLDER/quality-check.jpg"
+    }
+  }
+}

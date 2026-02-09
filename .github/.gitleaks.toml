@@ -1,0 +1,40 @@
+# ============================================================
+# Gitleaks Configuration for Pacha-Chain-Origin
+# ============================================================
+# This config excludes known false positives and directories
+# that should never be scanned in CI.
+
+title = "Pacha-Chain-Origin Gitleaks Config"
+
+# ── Paths to exclude from scanning ──
+[allowlist]
+  description = "Global allowlist"
+
+  # Well-known Anvil/Hardhat Account #0 private key (public test key)
+  # https://book.getfoundry.sh/reference/anvil/
+  regexTarget = "match"
+  regexes = [
+    # Anvil default Account #0 key — used in docs and test fixtures
+    '''0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80''',
+  ]
+
+  paths = [
+    # Dependencies (never in git, but just in case)
+    '''node_modules''',
+    '''frontend/node_modules''',
+
+    # Build artifacts
+    '''frontend/.next''',
+    '''.next''',
+
+    # Foundry dependencies (git submodules)
+    '''lib/''',
+
+    # Test fixtures may contain known test keys
+    '''test/''',
+
+    # Generated output
+    '''output/''',
+    '''broadcast/''',
+    '''cache/''',
+  ]

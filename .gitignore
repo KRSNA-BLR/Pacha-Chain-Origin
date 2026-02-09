@@ -1,0 +1,46 @@
+# ============================================================
+# Pacha-Chain-Origin .gitignore
+# ============================================================
+
+# --- Foundry ---
+/cache/
+/out/
+/broadcast/
+
+# --- Dependencies ---
+/lib/
+
+# --- Node (si se usa para scripts auxiliares) ---
+/node_modules/
+
+# --- Environment ---
+.env
+.env.local
+.env.*.local
+
+# --- IDE ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# --- Coverage ---
+/coverage/
+lcov.info
+
+# --- Generated output ---
+/output/
+
+# --- Frontend (Next.js) ---
+frontend/.next/
+frontend/node_modules/
+frontend/.env.local
+
+# --- Misc ---
+*.log

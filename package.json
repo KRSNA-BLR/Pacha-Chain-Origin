@@ -1,0 +1,20 @@
+{
+  "name": "pacha-chain-scripts",
+  "version": "1.0.0",
+  "description": "Scripts auxiliares para Pacha-Chain-Origin: upload IPFS, QR codes, metadata",
+  "type": "module",
+  "scripts": {
+    "upload": "node scripts/upload-to-pinata.mjs",
+    "upload:metadata": "node scripts/upload-metadata.mjs",
+    "qr": "node scripts/generate-qr.mjs",
+    "validate": "node scripts/validate-metadata.mjs"
+  },
+  "dependencies": {
+    "pinata": "^1.5.0",
+    "qrcode": "^1.5.4",
+    "dotenv": "^16.4.7",
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "chalk": "^5.4.1"
+  }
+}
