@@ -12,6 +12,7 @@
 
 # --- Node (si se usa para scripts auxiliares) ---
 /node_modules/
+/package-lock.json
 
 # --- Environment ---
 .env

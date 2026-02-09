@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import path from "path";
 
 const securityHeaders = [
   {
@@ -32,6 +33,13 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  // ── Monorepo: tell Turbopack the project root is one level up ──
+  // Prevents "multiple lockfiles" warning (official docs: turbopack.root)
+  turbopack: {
+    root: path.resolve(__dirname, ".."),
+  },
+  // ── File tracing: include monorepo root for correct tracing ──
+  outputFileTracingRoot: path.resolve(__dirname, ".."),
   async headers() {
     return [
       {

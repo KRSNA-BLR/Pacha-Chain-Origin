@@ -244,34 +244,46 @@ export default function HomePage() {
 
       {/* Wallets Compatibles */}
       <section className="container mx-auto px-4 py-16 md:py-24">
-        <AnimateIn className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4">Wallets Compatibles</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Conecta tu wallet preferida para interactuar con el sistema de
-            trazabilidad. Compatible con las principales wallets del ecosistema
-            EVM.
-          </p>
+        <AnimateIn className="max-w-4xl mx-auto">
+          <div className="rounded-2xl border bg-card/50 backdrop-blur-sm p-8 md:p-12">
+            <div className="flex flex-col md:flex-row md:items-center gap-8">
+              {/* Left: heading */}
+              <div className="md:w-2/5 space-y-3">
+                <h2 className="text-2xl md:text-3xl font-bold leading-tight">
+                  Wallets<br />Compatibles
+                </h2>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Conecta tu wallet preferida para interactuar con el sistema de
+                  trazabilidad. Compatible con las principales wallets del
+                  ecosistema EVM.
+                </p>
+              </div>
+
+              {/* Right: wallet list */}
+              <div className="md:w-3/5 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {WALLETS.map((w) => (
+                  <a
+                    key={w.name}
+                    href={w.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center gap-4 p-4 rounded-xl bg-background/60 border border-transparent hover:border-primary/40 transition-all hover:bg-background"
+                  >
+                    <span className="text-3xl shrink-0 group-hover:scale-110 transition-transform">
+                      {w.icon}
+                    </span>
+                    <div className="min-w-0">
+                      <p className="text-sm font-semibold truncate">{w.name}</p>
+                      <p className="text-xs text-muted-foreground leading-snug">
+                        {w.desc}
+                      </p>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
         </AnimateIn>
-        <StaggerGroup className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
-          {WALLETS.map((w) => (
-            <AnimateIn key={w.name} variants={scaleIn}>
-              <a
-                href={w.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex flex-col items-center gap-3 p-6 rounded-xl border bg-card text-center h-full transition-all hover:shadow-lg hover:border-primary/50 hover:-translate-y-1"
-              >
-                <span className="text-4xl group-hover:scale-110 transition-transform">
-                  {w.icon}
-                </span>
-                <span className="text-sm font-semibold">{w.name}</span>
-                <span className="text-xs text-muted-foreground leading-tight">
-                  {w.desc}
-                </span>
-              </a>
-            </AnimateIn>
-          ))}
-        </StaggerGroup>
       </section>
 
       <Separator />
