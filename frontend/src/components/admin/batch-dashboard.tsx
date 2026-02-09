@@ -75,7 +75,7 @@ export function BatchDashboard() {
         toBlock: "latest",
       });
 
-      const items: BatchSummary[] = logs.map((log) => {
+      const items: BatchSummary[] = logs.map((log: (typeof logs)[number]) => {
         const args = (log as unknown as { args: Record<string, unknown> }).args;
         return {
           batchId: args.batchId as bigint,

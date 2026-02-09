@@ -223,7 +223,7 @@ export default function TrackBatchPage({
               value={`${farmer.slice(0, 8)}...${farmer.slice(-6)}`}
               mono
             />
-            {uri && (
+            {!!uri && (
               <DetailRow
                 label="IPFS"
                 value={String(uri)}
