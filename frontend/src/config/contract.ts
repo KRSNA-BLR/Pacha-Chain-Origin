@@ -33,10 +33,23 @@ export const DEFAULT_CHAIN_ID =
     : polygonAmoy.id;
 
 /**
- * Configuración del contrato para wagmi hooks
+ * Obtener dirección del contrato de forma segura (sin lanzar error).
+ * Retorna zero address como fallback — útil durante SSR/build.
+ */
+function getContractAddressSafe(chainId: number): Address {
+  const address = CONTRACT_ADDRESSES[chainId];
+  if (!address || address === "0x0000000000000000000000000000000000000000") {
+    return "0x0000000000000000000000000000000000000000" as Address;
+  }
+  return address;
+}
+
+/**
+ * Configuración del contrato para wagmi hooks.
+ * Usa getContractAddressSafe para no lanzar error durante SSR/build.
  */
 export const pachaContract = {
-  address: getContractAddress(DEFAULT_CHAIN_ID),
+  address: getContractAddressSafe(DEFAULT_CHAIN_ID),
   abi: PACHA_CHAIN_ORIGIN_ABI,
 } as const;
 

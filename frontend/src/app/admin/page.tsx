@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { AdminPanel } from "@/components/admin/admin-panel";
 
+/**
+ * No pre-renderizar: requiere wallet conectada y lee del contrato en runtime.
+ */
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Admin | Pacha Chain Origin",
   description:
