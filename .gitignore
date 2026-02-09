@@ -8,7 +8,7 @@
 /broadcast/
 
 # --- Dependencies ---
-/lib/
+# /lib/ is tracked via git submodules (foundry convention)
 
 # --- Node (si se usa para scripts auxiliares) ---
 /node_modules/

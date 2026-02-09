@@ -154,7 +154,7 @@ jobs:
         run: npm ci
 
       - name: Run ESLint (errors fail, warnings allowed)
-        run: npx eslint src/ --max-warnings -1
+        run: npx eslint src/
 
   # ──────────────────────────────────────────────────────────
   # 5. TEST — Foundry + Next.js build (PR + push)
